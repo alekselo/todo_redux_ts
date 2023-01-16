@@ -1,3 +1,4 @@
+
 import { generateId } from "../../helpers/helper";
 
 export const addTodo = (text: string) => {
@@ -7,23 +8,23 @@ export const addTodo = (text: string) => {
   }
 };
  
-export const deleteTodo = () => {
+export const deleteTodo = (id: string) => {
   return {
     type: 'DELETE' as const,
-    payload: '',
+    payload: id,
   }
 };
  
-export const editTodo = () => {
+export const editTodo = (id: string, text: string) => {
   return {
     type: 'EDIT' as const,
-    payload: {},
+    payload: {id, text}
   }
 };
  
-export const completeTodo = () => {
+export const completeTodo = (id: string) => {
   return {
     type: 'COMPLETE' as const,
-    payload: '',
+    payload: {id},
   }
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './App.module.scss'
 import { InputPlus } from './components/InputPlus/InputPlus';
+import { TodoList } from './components/TodoList/TodoList';
 
 
 
@@ -17,7 +18,9 @@ function App() {
         <section className={styles.articleSection}>
           <InputPlus />
         </section>
-        <section className={styles.articleSection}></section>
+        <section className={styles.articleSection}>
+          <TodoList />
+        </section>
       </article>
     </div >
   );

@@ -10,15 +10,15 @@ import styles from './InputPlus.module.scss';
 export const InputPlus = () => {
 
   const dispatch = useDispatch();
-  const tasks = useSelector(state => state);
-  console.log(tasks)
+  useSelector(state => state);
+
+
   const [text, setText] = useState('');
 
   const onClick = () => {
     if (text.trim() !== '') {
       dispatch(actions.addTodo(text.trim()))
     }
-    console.log(tasks)
     setText('');
   }
 
@@ -45,3 +45,4 @@ export const InputPlus = () => {
   </div>)
 
 };
+
