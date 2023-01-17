@@ -1,8 +1,4 @@
 
-import { taskCancelled } from '@reduxjs/toolkit/dist/listenerMiddleware/exceptions';
-import { act } from 'react-dom/test-utils';
-import { useSelector } from 'react-redux';
-import { TodoList } from '../../components/TodoList/TodoList';
 import * as actionCreators from './TodoActionCreator'
 
 type Actions = typeof actionCreators[keyof typeof actionCreators];
@@ -35,12 +31,11 @@ export const reducer = (state = initialTodoState, action: ReturnType<Actions>): 
         task.id === action.payload.id ? { ...task, completed: !task.completed } : task
       );
     case 'EDIT':
-      return state.map((task) => ({ ...task, text: task.id === action.payload.id ? action.payload.text : task.text }));
+      return state.map((task) => task.id === action.payload.id ? {...task, text: action.payload.text} : task);
+ 
     default:
       return state;
     
   }
-
 } 
-
 

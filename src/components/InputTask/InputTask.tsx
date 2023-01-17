@@ -31,7 +31,7 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
     dispatch(actions.completeTodo(id));
   }
 
-  const editTodo = () => {
+  const doEditTodo = (text: string) => {
     dispatch(actions.editTodo(id, text));
   }
 
@@ -42,7 +42,16 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
         {isEditMode ?
           <input
             value={value}
-            onChange={(e) => { setValue(e.target.value) }}
+            onChange={(e) => {
+              setValue(e.target.value);
+              doEditTodo(e.target.value);
+            }
+            }
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setIsEditMode(false);
+              }
+            }}
             className={styles.inputTaskTitleEdit}
           />
           :
@@ -54,8 +63,8 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
           aria-label='Save'
           className={styles.inputTaskBtnSave}
           onClick={() => {
-            editTodo();
             setIsEditMode(false);
+            // doEditTodo();
           }}
         />
       ) : (<button

@@ -29,8 +29,8 @@ export const InputPlus = () => {
       type="text"
       className={styles.inputPlusValue}
       placeholder="Type here..."
-      onKeyDown={(evt) => {
-        if (evt.key === 'Enter') {
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
           onClick();
         }
       }}

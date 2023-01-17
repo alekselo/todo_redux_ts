@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { StateType } from '../../store/todo/TodoReducer'
 import { InputTask } from '../InputTask/InputTask'
 import styles from './TodoList.module.scss'
 
 
 export const TodoList = () => {
-  const dispatch = useDispatch();
+
   const tasks = useSelector((state: Array<StateType>) => state)
   console.log(tasks)
 

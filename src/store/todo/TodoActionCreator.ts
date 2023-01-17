@@ -18,7 +18,7 @@ export const deleteTodo = (id: string) => {
 export const editTodo = (id: string, text: string) => {
   return {
     type: 'EDIT' as const,
-    payload: {id, text}
+    payload: {id,text}
   }
 };
  
