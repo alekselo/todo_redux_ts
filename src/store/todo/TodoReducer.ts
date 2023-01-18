@@ -9,11 +9,7 @@ export type StateType = {
   completed: boolean,
 };
 
-const initialTodoState: Array<StateType> = [
-    { id: '0', text: 'Learn React', completed: false },
-    { id: '1', text: 'Learn Redux', completed: true },
-    { id: '2', text: 'Build something fun!', completed: true },
-]
+const initialTodoState: Array<StateType> =[]
 
 
 

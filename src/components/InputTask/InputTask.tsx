@@ -31,25 +31,30 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
     dispatch(actions.completeTodo(id));
   }
 
-  const doEditTodo = (text: string) => {
-    dispatch(actions.editTodo(id, text));
+  const editTask = () => {
+    dispatch(actions.editTodo(id, value));
   }
 
   return (
     <div className={styles.inputTask}>
       <label className={styles.inputTaskLabel}>
-        <input type="checkbox" className={styles.inputTaskCheckbox} checked={isChecked} onChange={handleOnChange} disabled={isEditMode} />
+        <input
+          type="checkbox"
+          className={styles.inputTaskCheckbox}
+          checked={isChecked}
+          onChange={handleOnChange}
+          disabled={isEditMode} />
         {isEditMode ?
           <input
             value={value}
             onChange={(e) => {
               setValue(e.target.value);
-              doEditTodo(e.target.value);
             }
             }
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 setIsEditMode(false);
+                editTask();
               }
             }}
             className={styles.inputTaskTitleEdit}
@@ -64,7 +69,7 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
           className={styles.inputTaskBtnSave}
           onClick={() => {
             setIsEditMode(false);
-            // doEditTodo();
+            editTask();
           }}
         />
       ) : (<button

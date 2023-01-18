@@ -1,8 +1,6 @@
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-
+import { useDispatch, } from 'react-redux';
 import * as actions from '../../store/todo/TodoActionCreator';
 
 import styles from './InputPlus.module.scss';
@@ -10,7 +8,6 @@ import styles from './InputPlus.module.scss';
 export const InputPlus = () => {
 
   const dispatch = useDispatch();
-  useSelector(state => state);
 
 
   const [text, setText] = useState('');
@@ -20,6 +17,7 @@ export const InputPlus = () => {
       dispatch(actions.addTodo(text.trim()))
     }
     setText('');
+
   }
 
   return (<div className={styles.inputPlus}>
@@ -39,10 +37,9 @@ export const InputPlus = () => {
       type='submit'
       aria-label="Add"
       className={styles.inputPlusButton}
-      onClick={onClick}
+      onClick={() => { onClick(); }}
       disabled={!text}
     />
   </div>)
 
 };
-
