@@ -31,6 +31,35 @@
     box-shadow:0 4px 0 -3px #3F72AF;
     outline: none;
   } 
+  &RemoveModal {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 130px;
+    background-color: #3F72AF;
+    border-radius: 5px;
+    position: fixed;
+    top: 34%;
+    right: 42%;
+    text-align: center;
+    &Title {
+      padding-top: 15px;
+      font: 1rem/1em 'Roboto', sans-serif;
+      color: white;
+    }
+    &Button {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 5px;
+    }
+    Button{
+       font: 1rem/1em 'Roboto', sans-serif;
+      background-color: #DBE2EF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
   
 
 

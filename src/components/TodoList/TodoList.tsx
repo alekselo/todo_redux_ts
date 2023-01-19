@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux'
-import { StateType } from '../../store/todo/TodoReducer'
+import { RootStateType } from '../../store/todo/store'
 import { InputTask } from '../InputTask/InputTask'
 import styles from './TodoList.module.scss'
-import { store } from '../../store/todo/store'
 
 export const TodoList = () => {
 
-  const tasks = useSelector((state: Array<StateType>) => state)
-  console.log(store.getState())
+  const tasks = useSelector((state: RootStateType) => state.todo);
+
+  console.log(tasks);
 
   return (
     <section className={styles.articleSection}>

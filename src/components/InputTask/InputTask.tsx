@@ -17,14 +17,18 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
   const [isChecked, setIsChecked] = useState(completed);
   const [isEditMode, setIsEditMode] = useState(false);
   const [value, setValue] = useState(text);
-
+  const [isRemoveMode, setIsRemoveMode] = useState(false);
+  console.log(isRemoveMode)
   const handleOnChange = () => {
     setIsChecked(!isChecked);
     changeCompletedFlag();
   };
 
   const deleteTask = () => {
+
     dispatch(actions.deleteTodo(id));
+
+
   };
 
   const changeCompletedFlag = () => {
@@ -78,12 +82,29 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
         onClick={() => setIsEditMode(true)}
       />)}
 
-
+      {isRemoveMode === true &&
+        <div className={styles.inputTaskRemoveModal}>
+          <p className={styles.inputTaskRemoveModalTitle}>Are you sure? </p>
+          <div className={styles.inputTaskRemoveModalButton}>
+            <button className={styles.inputTaskRemoveModalButtonOk}
+              onClick={deleteTask}
+            >Delete</button>
+            <button className={styles.inputTaskRemoveModalButtonCancel}
+              onClick={() => setIsRemoveMode(!isRemoveMode)}
+            >Cancel</button>
+          </div>
+        </div>}
       <button
         aria-label='Remove'
         className={styles.inputTaskBtnRemove}
-        onClick={deleteTask}
+        onClick={() => {
+          setIsRemoveMode(!isRemoveMode);
+        }}
       />
+
+
+
+
     </div>
   );
 } 
