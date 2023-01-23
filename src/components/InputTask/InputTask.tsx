@@ -5,6 +5,7 @@ import * as actions from '../../store/todo/TodoActionCreator';
 
 import styles from './InputTask.module.scss';
 
+
 type InputTaskProps = {
   id: string,
   text: string,
@@ -82,28 +83,31 @@ export const InputTask: React.FC<InputTaskProps> = ({ id, text, completed }) => 
         onClick={() => setIsEditMode(true)}
       />)}
 
-      {isRemoveMode === true &&
-        <div className={styles.inputTaskRemoveModal}>
-          <p className={styles.inputTaskRemoveModalTitle}>Are you sure? </p>
-          <div className={styles.inputTaskRemoveModalButton}>
-            <button className={styles.inputTaskRemoveModalButtonOk}
-              onClick={deleteTask}
-            >Delete</button>
-            <button className={styles.inputTaskRemoveModalButtonCancel}
-              onClick={() => setIsRemoveMode(!isRemoveMode)}
-            >Cancel</button>
+      {isRemoveMode
+        ?
+        <div className={styles.inputTaskRemoveOverlay}>
+          <div className={styles.inputTaskRemoveModal} >
+            <div className={styles.inputTaskRemoveModalQuestion}>
+              <h3 className={styles.inputTaskRemoveModalQuestionTitle}>Are you sure?</h3>
+            </div>
+            <div className={styles.inputTaskRemoveModalButtons}>
+              <button onClick={deleteTask}
+              >Delete
+              </button>
+              <button onClick={() => setIsRemoveMode(!isRemoveMode)}
+              >Cancel
+              </button>
+            </div>
           </div>
-        </div>}
-      <button
-        aria-label='Remove'
-        className={styles.inputTaskBtnRemove}
-        onClick={() => {
-          setIsRemoveMode(!isRemoveMode);
-        }}
-      />
-
-
-
+        </div>
+        :
+        <button
+          aria-label='Remove'
+          className={styles.inputTaskBtnRemove}
+          onClick={() => {
+            setIsRemoveMode(!isRemoveMode);
+          }}
+        />}
 
     </div>
   );

@@ -1,0 +1,47 @@
+.ModalDelete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  &Modal {
+    width: 30%;
+    height: 35%;
+    background-color: #DBE2EF;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    &Question {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    &Title{
+      font: 1rem/1em 'Roboto', sans-serif;
+      font-size: 28px;
+    }
+    
+  }
+  &Buttons{
+      display: flex;
+      justify-content: space-around;
+      Button{
+        background: white;
+        width: 35%;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+          background-color: grey;
+        }
+      }
+    }
+  }
+  
+}
